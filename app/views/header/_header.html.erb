@@ -1,12 +1,29 @@
 <header class = "header">
 	<div class = "image">
-		<div class="av"></div>
+		<% if current_user %>
+			<div class="av"></div>
+		<% else %>
+			<div>
+				<button id = "sign_in" >Sign in
+					
+				</button>
+				<div id = "cont_sign"></div>
+			</div>
+		<% end %>
+
 		<div class = "container">
 			<a class="rootlink" href="/">SSCF</a>
 			<div class="cont_w"> - it's our future and our community</div>
 		</div>
 		<div class= "cont_about">
-			<a class="about" href="/">Information</a>
+			<div class = "ab_m"><a class="about">Information</a>
+
+					<ul id = "navbar">
+						<li><a href = "#">О нас</a></li>
+						<li><a href = "#">Документация</a></li>
+					</ul>
+
+			</div>
 		</div>
 	</div>
 </header>
