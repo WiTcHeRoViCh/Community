@@ -1,0 +1,94 @@
+body {
+	background: url("s_f5.jpg") no-repeat;
+	background-attachment: fixed;
+	background-size: 1860px 985px;
+}
+
+.root_body {
+	width: 80%;
+	height: 90%;
+	margin-left: 10%;
+	position: absolute;
+	top: 200px;
+	border: 1px solid black;
+	border-radius: 80px 80px 20px 20px;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.root_body h1 {
+	text-align: center;
+	color: #efe9e9;
+}
+
+.u_name {
+	padding-right: 7px;
+}
+
+.users {
+	position: absolute;
+}
+
+.user {
+	display: inline;
+  margin-left: 20px;
+  float: left;
+}
+
+.u_av {
+	width: 97px;
+	padding-left: 9%;
+}
+
+.u_full_name {
+	display: flex;
+}
+
+#root_tabs {
+	height: 90px;
+	list-style-type: none;
+	position: absolute;
+	width: 100%;
+	border-radius: 80px 80px 0 0;
+	background: rgba(64,120,190, 0.7);
+}
+
+#root_tabs ul {
+	list-style-type: none;
+}
+
+#root_tabs ul li {
+	float: left;
+	text-decoration: none;
+	outline: none;
+	margin-left: 125px;
+	margin-top: 15px;
+	font-size: 22px;
+}
+
+#root_tabs ul li a {
+	text-decoration: none;
+	cursor: pointer;
+	color: #eaeaea;
+	position: absolute;
+	top: 0;
+	width: 113px;
+	height: 60px;
+	padding-top: 29px;
+}
+
+#root_tabs ul li a:hover {
+	border-left: 1px solid #cfcfcf;
+	padding-left: 10px;
+	background-color: #5681ab;
+}
+
+#current {
+	border-left: 1px solid #cfcfcf;
+	padding-left: 10px;
+	background-color: #5681ab;	
+}
+
+
+#tab {
+	margin-top: 130px;
+}

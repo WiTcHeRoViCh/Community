@@ -1,1 +1,54 @@
-<h1>On this page you can find information about SSCF</h1>
+<div class = "root_body">
+	
+	<div id = "root_tabs">
+		<ul>
+			
+			<li>
+				<a rel = "root">Главная</a>
+			</li>
+			
+			<li>
+				<a rel = "chat">Чат</a>
+			</li>
+			
+			<li>
+				<a rel = "news">Новости</a>
+			</li>
+			
+			<li>
+				<a rel = "project">Проекты</a>
+			</li>
+
+		</ul>	
+	</div>
+
+	<div id = "tab"></div>
+
+</div>
+
+
+
+<script type="text/javascript">
+
+  $('#tab').html("<%= escape_javascript(render 'header/root' ) %>")
+
+  $('#root_tabs ul li a').click(function(e) {
+
+  	if (e.target.rel == "root"){
+			tab = "<%= escape_javascript(render 'header/root' ) %>";
+  	}
+		else if (e.target.rel == "chat") {
+			tab = "<%= escape_javascript(render 'header/chat' ) %>";
+		}
+		else if (e.target.rel == "news") {
+			tab = "<%= escape_javascript(render 'header/news' ) %>";
+		}
+		else if (e.target.rel == "project") {
+			tab = "<%= escape_javascript(render 'header/project' ) %>";
+		}
+
+  	$('#tab').html(tab)
+  	ReactRailsUJS.mountComponents()
+  });
+ 
+</script>

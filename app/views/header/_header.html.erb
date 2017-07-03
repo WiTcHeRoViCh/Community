@@ -1,19 +1,27 @@
 <header class="header">
 	<div class="image">
+
+		<% if current_user %>
+		
+			<div class="h_cur">
+				<div style="position: absolute;"><img src="assets/example.jpg"></div>
+				<span><%= current_profile.name %></span>
+			</div>
+
+			<div id = "h_menu">
+				<%= render 'header/user_menu' %>
+			</div>
+
+		<% else %>
+
 			<div>
 				<button id="sign_in">Sign in</button>
-
 				<div id="cont_sign">
-					<div class = 'mod_hw' ref="proc_1">
-
-						<div class = 'mod_sign'>
 							<%= render 'sessions/sign_in' %>
-						</div>
-
-					</div>	
 				</div>
-
 			</div>
+
+		<% end %>
 
 		<div class="container">
 			<a class="rootlink" onclick="location.href = '/'" href="/">SSCF</a>

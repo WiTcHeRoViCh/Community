@@ -21,3 +21,40 @@
 if (typeof window !== 'undefined') {
     window.React = React;
 }
+
+
+$(document).ready(function() {
+	tabs = $('#root_tabs ul li a');
+	tabs[0].id = "current"
+
+	tabs.click(function(e) {
+		tabs.removeAttr('id');
+
+		e.target.id = "current"
+	});
+
+});
+
+// var a = ' 300 × 198 - nest.by ';
+
+// function my(x) {
+// 	v = [];
+// 	c = document.getelementsbyclassname('rg_ilmn');
+
+// 	for (var i = 0; i < 10; i++) {
+// 		if (findsize(c[i].innertext) == x) {
+// 			v.push(c)
+// 			console.log('yes')
+// 		}
+// 	}
+// }
+
+// function findsize(x) {
+// 	b = [];
+// 	for (i = 0; i < x.length; i++) {
+//   	if (/\d/.test(x[i]) || x[i] == "×") {
+//     	b.push(x[i])
+//   	}
+// 	}
+// 	return b.join('')	
+// }

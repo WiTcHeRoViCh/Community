@@ -1,0 +1,7 @@
+			<div>
+				<%= link_to 'Sign out', sign_out_path, onclick: "location.href = '/sign_out'" %>
+			</div>
+
+			<div>
+				<%= link_to 'Profile', user_profile_path(current_user, current_user.id), onclick: "location.href = '/users/#{current_user.id}/profiles/#{current_user.id}'" %>
+			</div>

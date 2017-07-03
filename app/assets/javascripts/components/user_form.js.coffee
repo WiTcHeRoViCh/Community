@@ -27,7 +27,6 @@
 			className: 'form-inline'
 			onSubmit: @handleSubmit
 			method: 'post'
-			action: 'http//localhost:3000/'
 			React.DOM.div
 				className: 'form-group'
 				React.DOM.input
