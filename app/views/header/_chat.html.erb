@@ -1,0 +1,38 @@
+<h1>Chat</h1>
+
+<div id = "chat">
+	<div id = "messages" data-room-id=<%=room%>>
+	  <%= render messages %>
+	</div>
+
+	<%= render partial: 'messages/form', locals: {message: message} %>
+
+</div>
+
+<script type="text/javascript">
+	$('#message_body').focus();
+	$('.message p a').click(function(e) {update(e)});
+	mes_body_focus();
+
+	function update(e){
+  	mes = $(e.target).parents('div.message');
+  	id = $(mes).data('message-id');
+  	span = $(mes).find('span')[0];
+  	text = span.innerText;
+  	text_2 = span.innerText;
+  	span.innerHTML = "<input id='message_body' name='message[update_body]' value='"+text+"'> "
+  	$('[name="message[update_body]"]').focus();
+
+ 		$('[name="message[update_body]"]').focusout(function(e) {
+			span.innerHTML = text_2;
+			mes_body_focus();
+		});
+	}
+
+	function mes_body_focus() {
+		$(document).keydown(function() {$('#message_body').focus()})
+	}
+
+// document.getElementById('message_body').scrollIntoView()
+
+</script>

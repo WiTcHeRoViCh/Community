@@ -1,0 +1,21 @@
+	<% user = User.find(message.user_id) %>
+		
+	<div class = "message" data-message-id = <%=message.id%>>
+		
+	  	<strong><%= user.profile.name %></strong>
+
+	  	<p>
+	    	<span><%= message.body %></span>
+
+  			  <a>Edit</a>  <span class = "destroy_message">Delete</span>
+
+	  		<%= message.message_time %>
+  		</p>
+
+	</div>
+
+	<% if defined? hr_line %>
+		<% if hr_line(message.id) %>
+			<p class="line" rel = "<%= message.created_at.strftime("%d%m%y")%>"><span><%= message.created_at.strftime("%d/%m/%y") %></span></p>
+		<% end %>
+	<% end %>

@@ -1,0 +1,9 @@
+<% if current_user %>
+	<%= simple_form_for message do |f| %>
+
+	  <%= f.hidden_field :user_id, value: current_user.id %>
+  	<%= f.label :body %>
+  	<%= f.text_field :body %>
+
+	<% end %>
+<% end %>
