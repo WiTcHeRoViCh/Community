@@ -16,6 +16,10 @@
 		event.preventDefault()
 		$.post '/users', {user: @state}, (data) =>
 			@setState @getInitialState()
+		, 'JSON', 
+
+		success: (data, success, xhr) ->
+      console.log(data)
 
 	render: ->
 

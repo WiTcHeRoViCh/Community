@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :current_cookie
 
   private
 
@@ -10,12 +9,8 @@ class ApplicationController < ActionController::Base
 
   def current_profile
   	@current_profile = current_user.profile
-  end
+  end	
 
-  def current_cookie
-  	cookies[:current_user] = current_user
-  end
-
-  helper_method :current_user, :current_profile, :room
+  helper_method :current_user, :current_profile
   
 end
