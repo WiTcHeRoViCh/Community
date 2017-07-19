@@ -1,14 +1,13 @@
-	<% user = User.find(message.user_id) %>
-		
+
 	<div class = "message" data-message-id = <%=message.id%>>
 		
-	  	<strong><%= user.profile.name %></strong>
+	  	<strong><%= message.user_name %></strong>
 
 	  	<p>
 	    	<span><%= message.body %></span>
-
+	    	
   			  <a>Edit</a>  <span class = "destroy_message">Delete</span>
-
+  			
 	  		<%= message.message_time %>
   		</p>
 

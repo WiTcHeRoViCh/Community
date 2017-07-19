@@ -6,7 +6,7 @@ body {
 
 .root_body {
 	width: 80%;
-	height: 90%;
+	height: 950px;
 	margin-left: 10%;
 	position: absolute;
 	top: 200px;
@@ -85,10 +85,21 @@ body {
 #current {
 	border-left: 1px solid #cfcfcf;
 	padding-left: 10px;
-	background-color: #5681ab;	
+	background-color: #5681ab;
 }
 
 
 #tab {
 	margin-top: 130px;
+	position: absolute;
+	width: 100%;
+	height: 82.7%;
+}
+
+#tab .tabs{
+	display: none;
+}
+
+#tab div[name] {
+	height: 100%;
 }

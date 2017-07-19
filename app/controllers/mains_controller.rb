@@ -8,7 +8,7 @@ class MainsController < ApplicationController
 
 	def prof
 		c = []
-		users = User.all
+		users = User.all.includes(:profile)
 
 		for user in users do 
 			c.push(user.profile)
@@ -40,9 +40,12 @@ class MainsController < ApplicationController
   		end
   	}
   	return false
+  end
 
+  def articles
+    @articles ||= Article.all.sort.reverse
   end
 
 
-  helper_method :messages, :room, :message, :hr_line
+  helper_method :messages, :room, :message, :hr_line, :articles
 end

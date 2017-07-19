@@ -1,42 +1,36 @@
 $ ->
-  if $('#messages').length > 0
-    alert('true')
-    initCableChannel($('#messages'))
-
-$(document).on 'click', '.room-channel', ->
-  initCableChannel($(@))
-
+  initCableChannel(1)
 
 $(document).on 'keypress', '#message_body', (event) ->
   if event.keyCode is 13
     message_form = $(@).parents('form')
     current_user_id = $('#message_user_id').val()
+    name = $('.h_cur span').html()
 
     if message_form.hasClass('new_message')
-      App.room.speak event.target.value, current_user_id
+      App.room.speak event.target.value, current_user_id, name
       event.target.value = ''
       event.preventDefault()
     else
       mes = $(event.target).parents('div.message');
       id = $(mes).data('message-id');
       val = $(event.target).val();
-      App.room.update val, id, current_user_id
+      App.room.update val, id
 
 $(document).on 'click', '.destroy_message', ->
-  user_id = $('#message_user_id').val()
-  App.room.destroy $(@).parents('.message').data('message-id'), user_id
+  App.room.destroy $(@).parents('.message').data('message-id')
 
 initCableChannel = (roomElement) ->
   App.room = App.cable.subscriptions.create {
-    channel: "RoomChannel", roomId: roomElement.data('room-id') },
+    channel: "RoomChannel", roomId: roomElement},
 
     received: (data) ->
       appendMessage(data)
       destroyMessage(data)
       updateMessage(data)
 
-    speak: (body, current_user_id) ->
-      @perform 'speak', body: body, current_user_id: current_user_id
+    speak: (body, current_user_id, name) ->
+      @perform 'speak', body: body, current_user_id: current_user_id, name: name
 
     destroy: (id) ->
       @perform 'destroy', id: id
@@ -47,6 +41,7 @@ initCableChannel = (roomElement) ->
 appendMessage = (data) ->
   if data['action'] == 'create'
     $('#messages').append data['message']
+    document.getElementById('message_body').scrollIntoView()
 
 destroyMessage = (data) ->
   if data['action'] == 'destroy'

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   	resources :profiles
   end
   resources :messages
+  resources :articles, only: :edit
 
   root 'mains#index'
 

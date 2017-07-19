@@ -25,13 +25,65 @@ if (typeof window !== 'undefined') {
 
 $(document).ready(function() {
 	tabs = $('#root_tabs ul li a');
-	tabs[0].id = "current"
+	getCookie("render") ? $('[rel ="'+ getCookie("render") +'"]')[0].id = "current" : tabs[0].id = "current"
+	tab = $('#tab')
+	getCookie("render") ? $('#tab [name = "'+getCookie("render")+'"]').removeAttr('class') : $('#tab [name = "root"]').removeAttr('class')
 
 	tabs.click(function(e) {
 		tabs.removeAttr('id');
-
 		e.target.id = "current"
+
+		tab.children().attr('class', 'tabs')
+		$('[name="'+e.target.rel+'"]').removeAttr('class')
+
+		document.cookie = "render = "+e.target.rel
 	});
+
+
+	$('#root_tabs ul li a').each(function(index){
+  		$('#root_tabs ul li a')[index].accessKey = (index+1).toString();
+	});
+
+
+	$('.room-channel').click(function() {
+		$('#message_body').focus();
+		document.getElementsByClassName("message")[$('.message').length-1].scrollIntoView();
+		mes_body_focus();
+	})
+
+	getCookie("render") == "chat" ? mes_body_focus() : ''
+
+	$('.message p a').click(function(e) {update(e)});
+
+	
+	function update(e){
+  	mes = $(e.target).parents('div.message');
+  	id = $(mes).data('message-id');
+  	span = $(mes).find('span')[0];
+  	text = span.innerText;
+  	text_2 = span.innerText;
+  	span.innerHTML = "<input id='message_body' name='message[update_body]' value='"+text+"'> "
+  	$('[name="message[update_body]"]').focus();
+
+ 		$('[name="message[update_body]"]').focusout(function(e) {
+			span.innerHTML = text_2;
+			mes_body_focus();
+		});
+	}
+
+	function mes_body_focus() {
+		$(document).keydown(function() {
+			document.getElementsByClassName("message")[$('.message').length-1].scrollIntoView()
+			$('#message_body').focus();
+		})
+	}
+
+	function getCookie(name) {
+  	var matches = document.cookie.match(new RegExp(
+    	"(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+  	));
+  	return matches ? decodeURIComponent(matches[1]) : undefined;
+	}
 
 });
 

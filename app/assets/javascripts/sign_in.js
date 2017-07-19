@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 	sign = $('#sign_in');
-	cont = $('#cont_sign');
+	cont = $('.mod_hw');
 
 	sign.click(function() {
 		cont.css("display", "block");
