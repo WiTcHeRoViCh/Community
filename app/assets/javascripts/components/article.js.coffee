@@ -27,7 +27,7 @@
 				className: 'art_user'
 				'Created by: '+@props.article.user_code
 
-			if @props.current_user.code == @props.article.user_code
+			if @props.current_user && @props.current_user.code == @props.article.user_code
 				React.DOM.div
 					className: 'art_set'
 					React.DOM.div

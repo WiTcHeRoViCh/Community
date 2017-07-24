@@ -46,6 +46,10 @@ class MainsController < ApplicationController
     @articles ||= Article.all.sort.reverse
   end
 
+  def projects
+    @projects = Project.all.includes(:user).reverse
+  end
 
-  helper_method :messages, :room, :message, :hr_line, :articles
+
+  helper_method :messages, :room, :message, :hr_line, :articles, :projects
 end

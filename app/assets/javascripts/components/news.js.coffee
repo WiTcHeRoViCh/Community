@@ -16,7 +16,7 @@
 		@state.articles.splice idx, 1
 		@setState articles: @state.articles
 
-	showForm: ->
+	showFormA: ->
 		$('.mod_hw').css("display", "block");
 
 	hideForm: (event) ->
@@ -24,18 +24,23 @@
 			$('.mod_hw').css("display", "none");
 
 	render: ->
-		React.DOM.div
-			className: 'articles'
-			React.DOM.button
-				id: 'art_button'
-				onClick: @showForm
-				'Add news'
+		React.DOM.div null,
+			if @props.current_user
+				React.DOM.div null,
+					React.DOM.button
+						id: 'art_button'
+						onClick: @showFormA
+						'Add news'
+
+					React.DOM.div
+						className: 'mod_hw'
+						onClick: @hideForm
+						React.DOM.div
+							id: 'art_mod'
+							React.createElement ArticleForm, handleNewArticle: @addArticle, current_user: @props.current_user
+
 			React.DOM.div
-				className: 'mod_hw'
-				onClick: @hideForm
-				React.DOM.div
-					id: 'art_mod'
-					React.createElement ArticleForm, handleNewArticle: @addArticle, current_user: @props.current_user
-		
-			for article in @state.articles
-				React.createElement Article, key: article.id, article: article, current_user: @props.current_user, handleDeleteArticle: @deleteArticle
+				className: 'articles'
+
+				for article in @state.articles
+					React.createElement Article, key: article.id, article: article, current_user: @props.current_user, handleDeleteArticle: @deleteArticle

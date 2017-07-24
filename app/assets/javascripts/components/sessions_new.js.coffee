@@ -34,8 +34,8 @@
   handleSubmit: (e) ->
     e.preventDefault()
     $.post 'create', { user: @state }, (data) =>
-      @props.handleNewRecord data
       @setState @getInitialState()
+      document.location = '/'
 
 	render: ->
 		React.DOM.form

@@ -1,0 +1,43 @@
+<div class = "article" data-key = "<%= article.id %>">
+	<div class = "art_title">
+		<%= article.title %>
+	</div>
+
+	<div class = "art_photo">
+		<%= article.photo %>
+	</div>
+
+	<div class = "art_desc">
+		<%= article.description %>
+	</div>
+
+	<div class = "art_imp">
+		<%= article.importance %>
+	</div>
+
+	<div class = "art_user">
+		<%= article.user_code %>
+	</div>
+
+	<% if current_user && current_user.code == article.user_code %>
+
+		<div class = "art_set">
+			<div class = "art_edit">
+				<%= link_to 'Edit', edit_article_path(article), {class: 'edit_article' }%>
+			</div>
+
+			<div class = "art_edit">
+				<button class="delete_art" onclick = "deleteArt('<%= article.id %>')">Delete</button>
+			</div>
+		</div>
+
+	<% end %>
+
+</div>
+
+<script type="text/javascript">
+	function deleteArt(id) {
+		par = $('[data-key="'+id+'"]')
+		par.remove()
+	}
+</script>

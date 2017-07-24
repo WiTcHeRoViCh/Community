@@ -2,7 +2,7 @@
 class ArticleChannel < ApplicationCable::Channel
 
 	def subscribed
-		stream_from 'article_chennal_1'
+		stream_from 'article_channal_1'
 	end
 
 	def speak(data)

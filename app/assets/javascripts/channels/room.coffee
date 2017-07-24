@@ -41,12 +41,14 @@ initCableChannel = (roomElement) ->
 appendMessage = (data) ->
   if data['action'] == 'create'
     $('#messages').append data['message']
-    document.getElementById('message_body').scrollIntoView()
+    $('.message:last')[0].scrollIntoView()
 
 destroyMessage = (data) ->
   if data['action'] == 'destroy'
     message = $("*[data-message-id=#{data['id']}]")
     message.remove();
+    if $('#messages').children(':last').is('p')
+      $('#messages').children(':last').remove()
 
 updateMessage = (data) ->
   if data['action'] == 'update'
