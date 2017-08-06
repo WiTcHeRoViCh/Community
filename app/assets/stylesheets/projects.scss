@@ -36,9 +36,16 @@
 
 .all_proj {
 	height: 80%;
-	overflow: scroll;
+	overflow-y: scroll;
 	position: absolute;
 	width: 80%;
+}
+
+.project {
+	background: #d2a6ff80;
+	margin-bottom: 15px;
+	padding: 15px;
+	text-align: justify;
 }
 
 #submit {

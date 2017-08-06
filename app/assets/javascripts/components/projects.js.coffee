@@ -8,6 +8,7 @@
 
 	addProject: (project) ->
 		projects = @state.projects.slice()
+		project.id = projects[0].id+1
 		projects.unshift project
 		@setState projects: projects
 

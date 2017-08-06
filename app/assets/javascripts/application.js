@@ -51,7 +51,10 @@ $(document).ready(function() {
 		mes_body_focus();
 	})
 
-	getCookie("render") == "chat" ? mes_body_focus() : ''
+	if (getCookie("render") == "chat") {
+		mes_body_focus();
+		document.getElementsByClassName("message")[$('.message').length-1].scrollIntoView()
+	}
 
 	$('.message p a').click(function(e) {update(e)});
 

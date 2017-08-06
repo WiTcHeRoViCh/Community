@@ -10,7 +10,9 @@ $(document).on 'click', '.btn-primary', (event) ->
   	App.article.speak arr
 
 $(document).on 'click', '.delete_art', (event) ->
-	App.article.delete $(@).parents('.article').data('key')
+  if confirm("You sure to delete this article?")
+    App.article.delete $(@).parents('.article').data('key')
+    $(@).parents('.article').remove()
 
 
 initArticleChannel = (id) ->

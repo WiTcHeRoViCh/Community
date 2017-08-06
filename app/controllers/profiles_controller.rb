@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
-	before_action :cur_prof, only: [:show]
+	before_action :user, only: [:show]
+	load_and_authorize_resource
 
 	def show
 
@@ -8,7 +9,7 @@ class ProfilesController < ApplicationController
 
 	private
 
-	def cur_prof
-		@cur_prof = User.find(params[:id]).profile
+	def user
+		@user = User.find(params[:id])
 	end
 end	

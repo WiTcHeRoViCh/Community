@@ -16,7 +16,7 @@
 	</div>
 
 	<div class = "art_user">
-		<%= article.user_code %>
+		Created by: <%= article.user_code %>
 	</div>
 
 	<% if current_user && current_user.code == article.user_code %>
@@ -27,17 +27,10 @@
 			</div>
 
 			<div class = "art_edit">
-				<button class="delete_art" onclick = "deleteArt('<%= article.id %>')">Delete</button>
+				<button class="delete_art">Delete</button>
 			</div>
 		</div>
 
 	<% end %>
 
 </div>
-
-<script type="text/javascript">
-	function deleteArt(id) {
-		par = $('[data-key="'+id+'"]')
-		par.remove()
-	}
-</script>

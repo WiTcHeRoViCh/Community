@@ -23,6 +23,7 @@ gem 'formsy-react-rails'
 gem 'webpack-rails'
 gem 'foreman'
 gem 'simple_form'
+gem 'cancancan'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -38,5 +39,3 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-gem 'foreman'

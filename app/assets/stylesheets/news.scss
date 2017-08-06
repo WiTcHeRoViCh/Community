@@ -40,7 +40,7 @@
 #news {
 	width: 80%;
 	height: 80%;
-	overflow: scroll;
+	overflow-y: scroll;
 	margin-left: 10%;
 }
 
@@ -51,13 +51,12 @@
 }
 
 .art_set {
-	margin-top: -95px;
-	float: right;
+	margin-top: 10px;
 }
 
 .art_set div {
 	display: inline;
-	margin-left: 10px;
+	margin-right: 10px;
 }
 
 div[name="news"] h1 {

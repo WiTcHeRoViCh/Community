@@ -1,7 +1,27 @@
-			<div>
-				<%= link_to 'Sign out', sign_out_path, onclick: "location.href = '/sign_out'" %>
-			</div>
+<div>
+	<img src="/assets/user1" title="Profile" onclick="document.location = '/users/<%= current_user.id%>/profiles/<%= current_user.id%>'">
+</div>
 
-			<div>
-				<%= link_to 'Profile', user_profile_path(current_user, current_user.id), onclick: "location.href = '/users/#{current_user.id}/profiles/#{current_user.id}'" %>
-			</div>
+<div>
+	<img src="/assets/for_messages" title="Messages">
+</div>
+
+<div>
+	<img src="/assets/for_news3_1.png" title="News">
+</div>
+
+<div>
+	<img src="/assets/for_project2" title="Projects">
+</div>
+
+<div>
+	<img src="/assets/for_chat5_2" title="Chat">
+</div>
+
+<div>
+	<img src="/assets/for_profile2_5" title="Settings">
+</div>
+
+<div>
+	<img src="/assets/for_exit2_1" title="Exit">
+</div>

@@ -1,7 +1,4 @@
 @Article = React.createClass
-	delete: ->
-		@props.handleDeleteArticle @props.article
-
 	render: ->
 		React.DOM.div
 			className: 'article'
@@ -41,5 +38,4 @@
 						className: 'art_edit'
 						React.DOM.button
 							className: 'delete_art'
-							onClick: () => @delete()
 							'Delete'

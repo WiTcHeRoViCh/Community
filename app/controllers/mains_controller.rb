@@ -1,20 +1,10 @@
 class MainsController < ApplicationController
 
 	def index
-		@users_profile = prof
-	end	
+		@users_profile = Profile.all
+	end
 
 	private
-
-	def prof
-		c = []
-		users = User.all.includes(:profile)
-
-		for user in users do 
-			c.push(user.profile)
-		end
-		return c
-	end
 
   def room
   	"1"
@@ -29,15 +19,14 @@ class MainsController < ApplicationController
   end
 
   def hr_line(message)
-  	messages.each_with_index{|e, i| if e.id == message && messages[i+1] != nil
+  	messages.each_with_index{|e, i| 
 
+      if e.id == message && messages[i+1] != nil
   			if messages[i].created_at.strftime("%d") != messages[i+1].created_at.strftime("%d")
   				return true
-  			else
-  				return false
   			end
-
   		end
+
   	}
   	return false
   end

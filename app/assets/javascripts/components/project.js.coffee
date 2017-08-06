@@ -2,6 +2,7 @@
 	render: ->
 		React.DOM.div
 			className: 'project'
+			'data-key': @props.project.id
 
 			React.DOM.div
 				id: 'proj_title'
@@ -21,8 +22,24 @@
 
 			React.DOM.div
 				id: 'proj_approved'
-				@props.project.approved.toString()
+				'Approved: '+@props.project.approved.toString()
 
 			React.DOM.div
 				id: 'proj_user_code'
 				@props.project.user_code
+
+			if @props.current_user && @props.current_user.code == @props.project.user_code
+				React.DOM.div
+					className: 'art_set'
+					React.DOM.div
+						className: 'set'
+						React.DOM.a
+							className: 'proj_edit'
+							href: 'users/'+@props.current_user.id+'/projects/'+@props.project.id+'/edit'
+							'Edit'
+
+					React.DOM.div
+						className: 'set'
+						React.DOM.button
+							className: 'delete_proj'
+							'Delete'

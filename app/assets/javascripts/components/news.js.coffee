@@ -11,11 +11,6 @@
 		articles.unshift article
 		@setState articles: articles
 
-	deleteArticle: (article) ->
-		idx = @state.articles.indexOf article
-		@state.articles.splice idx, 1
-		@setState articles: @state.articles
-
 	showFormA: ->
 		$('.mod_hw').css("display", "block");
 
@@ -43,4 +38,4 @@
 				className: 'articles'
 
 				for article in @state.articles
-					React.createElement Article, key: article.id, article: article, current_user: @props.current_user, handleDeleteArticle: @deleteArticle
+					React.createElement Article, key: article.id, article: article, current_user: @props.current_user
