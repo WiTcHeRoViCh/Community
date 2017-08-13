@@ -21,6 +21,7 @@
 
 #user_avatar img {
 	width: 250px;
+	height: 230px;
 	border-radius: 30px;
 	border: 5px solid #f04b4bb3;
 	display: inherit;
@@ -67,9 +68,11 @@
 	margin-left: 150px;
 	margin-top: 50px;
 	width: 81.4%;
-	height: 250px;
+	height: 270px;
 	background: #d77171;
 	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	padding-top: 15px;
 }
 
 .padd15 {
@@ -80,4 +83,107 @@
 	overflow-y: scroll;
 	height: 165px;
 	padding-right: 8px;
+}
+
+#all_photos {
+	position: relative;
+}
+
+#all_photos span {
+	margin-left: 30px;
+	font-size: 20px;
+	position: absolute;
+}
+
+#upload_photo {
+	width: 150px;
+	margin-left: 22px;
+	margin-top: 50px;
+	cursor: pointer;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	border-radius: 100%;
+	display: inline;
+}
+
+#upload_photo:active {
+	border: 1px solid #4cb6ac;
+}
+
+#photo_mod {
+	width: 500px;
+	background: #e9e9e9;
+	margin-left: 34%;
+	margin-top: 200px;
+	border-radius: 15px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.mod_photo_head {
+	padding: 10px;
+	background: #316eff;
+	color: #efeded;
+	border-radius: 14px 14px 0 0;
+	font-size: 17px;
+}
+
+#photo_form {
+	padding: 15px;
+}
+
+#photo_form input {
+	margin-bottom: 10px;
+	font-size: 17px;
+	height: 36px;
+	display: inherit;
+}
+
+#photo_submit {
+	width: 110px;
+	padding: 10px;
+	background: #316eff;
+	border-radius: 8px;
+	color: #b4b4b4;
+	cursor: default;
+}
+
+#photos {
+	margin-left: 200px;
+	position: absolute;
+	height: 264px;
+	width: 80%;
+	display: inline;
+	overflow-x: scroll;
+	white-space: nowrap;
+}
+
+.photo {
+	display: inline;
+	margin-right: 20px;
+}
+
+.show_photo {
+	width: 240px;
+	height: 240px;
+	border: 5px solid #c65050;
+	border-radius: 10px;
+}
+
+.uploading_photo {
+	width:100px;
+	height:100px;
+}
+
+.delete_photo {
+	width: 40px;
+	height: 40px;
+	border: 0;
+	border-radius: 100%;
+	position: absolute;
+	margin-left: 225px;
+	background: black;
+	cursor: pointer;
+}
+
+#for_adding_photo {
+	position: absolute;
 }

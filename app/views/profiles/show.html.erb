@@ -1,8 +1,9 @@
+<% current_profile = @user.profile %>
 <div id = "profile">
 	<div id = "user_inf">
 		
 		<div id = "user_avatar">
-			<img src="/assets/example">
+			<%= image_tag(current_profile.avatar) %>
 			<button>Write message</button>
 		</div>
 
@@ -10,19 +11,18 @@
 			<h2>Personal information</h2>
 			<div class = "scroll">
 				<ul>
-					<li><div>Full name: <%= @user.profile.name %> <%= @user.profile.surname%></div></li>
-					<li><div>Personal code: <%= @user.code%></div></li>
-					<li><div>Position: <%= @user.profile.position%></div></li>
-					<li><div>Country: <%= @user.profile.country%></div></li>
-					<li><div>Place of study: <%= @user.profile.place_of_study%></div></li>
-					<li><div><%= @user.profile.name %>'s age: <%= @user.profile.age%></div></li>
-					<li><div>Birthday: <%= @user.profile.birthday%></div></li>
-					<li><div>Hobby: <%= @user.profile.hobby%></div></li>
-					<li><div>Birthday: <%= @user.profile.birthday%></div></li>
-					<li><div>Where want to live: <%= @user.profile.where_want_to_live%></div></li>
-					<li><div>With what animal is associated: <%= @user.profile.association_with_animal%></div></li>
-					<li><div>Plans for future: <%= @user.profile.plan_for_future%></div></li>
-					<li><div>Description: <%= @user.profile.description%></div></li>
+					<% if current_profile.surname %>   								<li><div>Full name: <%= @user.profile.name %> <%= @user.profile.surname%></div></li> 						<% end %>
+					<% if @user.code %>   														<li><div>Personal code: <%= @user.code%></div></li> 																						<% end %>
+					<% if current_profile.position %>  			 					<li><div>Position: <%= @user.profile.position%></div></li> 																			<% end %>
+					<% if current_profile.country %>   								<li><div>Country: <%= @user.profile.country%></div></li> 																				<% end %>
+					<% if current_profile.place_of_study %>   				<li><div>Place of study: <%= @user.profile.place_of_study%></div></li> 													<% end %>
+					<% if current_profile.age %>  										<li><div><%= @user.profile.name %>'s age: <%= @user.profile.age%></div></li> 										<% end %>
+					<% if current_profile.birthday %>									<li><div>Birthday: <%= @user.profile.birthday%></div></li> 																			<% end %>
+					<% if current_profile.hobby %>										<li><div>Hobby: <%= @user.profile.hobby%></div></li> 																						<% end %>
+					<% if current_profile.where_want_to_live %>				<li><div>Where want to live: <%= @user.profile.where_want_to_live%></div></li> 									<% end %>
+					<% if current_profile.association_with_animal %>	<li><div>With what animal is associated: <%= @user.profile.association_with_animal%></div></li> <% end %>
+					<% if current_profile.plan_for_future %>					<li><div>Plans for future: <%= @user.profile.plan_for_future%></div></li> 											<% end %>
+					<% if current_profile.description %>							<li><div>Description: <%= @user.profile.description%></div></li>																<% end %>
 				</ul>
 			</div>
 		</div>
@@ -34,6 +34,8 @@
 	</div>
 
 	<div id="user_photos">
+		<%= render 'photos' %>
 		
+
 	</div>
 </div>

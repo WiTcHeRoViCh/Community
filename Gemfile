@@ -24,6 +24,8 @@ gem 'webpack-rails'
 gem 'foreman'
 gem 'simple_form'
 gem 'cancancan'
+gem 'carrierwave'
+gem 'carrierwave-base64'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

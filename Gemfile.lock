@@ -72,6 +72,13 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (1.0.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
+    carrierwave-base64 (2.5.3)
+      carrierwave (>= 0.8.0)
+      mime-types (~> 3.0)
     childprocess (0.6.3)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.1)
@@ -221,6 +228,8 @@ DEPENDENCIES
   byebug
   cancancan
   capybara (~> 2.13.0)
+  carrierwave
+  carrierwave-base64
   coffee-rails (~> 4.2)
   foreman
   formsy-react-rails

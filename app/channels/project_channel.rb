@@ -2,7 +2,7 @@
 class ProjectChannel < ApplicationCable::Channel
 
 	def subscribed
-		stream_from 'project_channal_1'
+		stream_from 'project_channel_1'
 	end
 
 	def speak(data)
@@ -34,7 +34,7 @@ class ProjectChannel < ApplicationCable::Channel
 
   def channel_add_article(article)
     ActionCable.server.broadcast(
-      "project_channal_1",
+      "project_channel_1",
       action: 'create',
       project: render_article(article)
     )

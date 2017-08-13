@@ -5,4 +5,6 @@ class User < ApplicationRecord
 
 	has_one :profile
 	has_many :projects
+	has_many :photos
+	has_many :anonymous_messages
 end

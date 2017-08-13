@@ -4,12 +4,20 @@ class ProfilesController < ApplicationController
 
 	def show
 
-	end	
-
+	end
 
 	private
 
 	def user
 		@user = User.find(params[:id])
 	end
-end	
+
+	def user_photos
+		@photos = User.find(params[:id]).photos.all.reverse
+	end
+
+
+
+	helper_method :user_photos, :user
+end
+
