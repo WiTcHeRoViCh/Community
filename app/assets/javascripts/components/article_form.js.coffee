@@ -10,6 +10,18 @@
 		name = event.target.name
 		@setState "#{name}": event.target.value
 
+	handleFileChange: (event) ->
+		name = event.target.name
+		file = event.target.files[0]
+		reader = new FileReader()
+		reader.onload = (output) ->
+			src = output.target.result
+			out = $('#mini_art_photo')
+			out.html("<img src='"+src+"' class='out_mini_photo' name='"+escape(file.name)+"'>")			
+		reader.readAsDataURL(file)
+
+		@setState "#{name}": event.target.value
+
 	valid: ->
 		btn = $('.btn-primary')
 		if @state.title && @state.photo && @state.description && @state.importance
@@ -22,9 +34,14 @@
 			return false
 
 	addArticle:  ->
-		if @valid()			
-			@props.handleNewArticle @state
+		if @valid()
+			out = $('.out_mini_photo')
+			src = out.attr('src')
+			name = out.attr('name')
+
+			@props.handleNewArticle {@state, src, name}
 			@setState @getInitialState()
+			$('#mini_art_photo').html('')
 			$('.mod_hw').css("display", "none");
 
 	render: ->
@@ -46,10 +63,13 @@
 				'Photo: '
 				React.DOM.input
 					className: 'form-control'
-					type: 'text'
+					type: 'file'
 					name: 'photo'
 					value: @state.photo
-					onChange: @handleChange
+					onChange: @handleFileChange
+
+			React.DOM.output
+				id: 'mini_art_photo'
 
 			React.DOM.div
 				className: 'form_group'

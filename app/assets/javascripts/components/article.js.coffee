@@ -10,7 +10,9 @@
 
 			React.DOM.div
 				className: 'art_photo'
-				@props.article.photo
+				if @props.article.photo.url
+					React.DOM.img
+						src: @props.article.photo.url
 
 			React.DOM.div
 				className: 'art_desc'

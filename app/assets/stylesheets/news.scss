@@ -1,13 +1,13 @@
 #art_mod {
 	margin-left: 39%;
-	margin-top: 250px;
-	width: 310px;
-	padding-left: 60px;
-	background: rgba(124, 163, 255, 0.4);
-	height: 335px;
-	padding-top: 20px;
-	border: 1px double black;
-	border-radius: 10px;
+  margin-top: 250px;
+  width: 310px;
+  background: rgba(124, 163, 255, 0.4);
+  padding-top: 20px;
+  padding-left: 60px;
+  padding-bottom: 20px;
+  border: 1px double black;
+  border-radius: 10px;
 }
 
 #article_form {
@@ -28,7 +28,6 @@
 	border: 1px solid black;
 	border-radius: 5px;
 	background: #1a28c366;
-	position: absolute;
 	cursor: default;
 	color: #686464;
 }
@@ -70,4 +69,14 @@ div[name="news"] h1 {
 
 .art_title {
 	font-size: 20px;
+}
+
+.art_photo img {
+	width: 200px;
+	height: 200px;
+}
+
+.out_mini_photo {
+	width: 100px;
+	height: 100px;
 }

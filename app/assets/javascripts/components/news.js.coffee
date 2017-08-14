@@ -7,9 +7,7 @@
 		articles: []
 
 	addArticle: (article) ->
-		articles = @state.articles.slice()
-		articles.unshift article
-		@setState articles: articles
+		App.article.addArticle article
 
 	showFormA: ->
 		$('.mod_hw').css("display", "block");
@@ -17,6 +15,36 @@
 	hideForm: (event) ->
 		if $(event.target).is($('.mod_hw'))
 			$('.mod_hw').css("display", "none");
+
+	componentDidMount: ->
+		@setSubscription()
+
+	setSubscription: ->
+		App.article = App.cable.subscriptions.create("ArticleChannel", {
+			connected: ->
+
+			disconnected: ->
+
+			received: (data) ->
+				@prependArticle data
+				@deleteA data
+
+
+			addArticle: (article) ->
+				@perform 'addArticle', article: article
+
+			deleteAhoto: (article_id, user_id) ->
+				@perform 'deleteAhoto', article_id: article_id, user_id: user_id
+
+			prependArticle: @prependArticle
+			deleteA: @deleteA
+		})
+
+	prependArticle: (data) ->
+		if data['action'] == 'create'
+			articles = @state.articles.slice()
+			articles.unshift data['article']
+			@setState articles: articles
 
 	render: ->
 		React.DOM.div null,

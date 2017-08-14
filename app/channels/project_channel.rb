@@ -12,7 +12,7 @@ class ProjectChannel < ApplicationCable::Channel
 		project = current_user.projects.new(title: proj[0], photo: proj[1], description: proj[2], approved: 'false', crew: proj[3], user_code: proj[5])
 		project.save!
 
-		article = Article.new(title: proj[0], photo: proj[1], description: proj[2]+'\nDevelopers: '+proj[3], importance: 'Small', user_code: proj[5])
+		article = Article.new(title: proj[0], photo: proj[1], description: proj[2]+' Developers: '+proj[3], importance: 'Small', user_code: proj[5])
 		article.save!
 
 		channel_add_article(article)

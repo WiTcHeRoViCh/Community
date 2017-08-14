@@ -11,12 +11,13 @@ class PhotoChannel < ApplicationCable::Channel
 			user_id = data['photo']['user_id']
 		end
 
-
 		if user_id
 			user = User.find(user_id)
+      article = Article.new(title: user.code+' add new photo', photo: images, user_code: user.code)
 			photo = user.photos.new(images: images)
 			clean_tempfile
 
+      article.save!
 			if photo.save!
 
 				ActionCable.server.broadcast(
@@ -29,7 +30,7 @@ class PhotoChannel < ApplicationCable::Channel
     	end
     
     else
-    	clean_tempfile
+
     end	
 
   end

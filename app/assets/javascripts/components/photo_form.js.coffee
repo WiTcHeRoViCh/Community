@@ -28,10 +28,31 @@
 			src = $('.uploading_photo').attr('src')
 			name = $('.uploading_photo').attr('name')
 
-			@props.handleNewPhoto {images: src, user_id: @state.user_id, name: name}
-			@setState @getInitialState()
-			$('#list').html('')
-			$('.mod_hw').css("display", "none");
+			status = @UrlExists src, (status) ->
+				if status != '0' && status != '404'
+					return true
+				else
+					return false
+
+			if status
+				@props.handleNewPhoto {images: src, name: name, user_id: @state.user_id}
+				@setState @getInitialState()
+				$('#list').html('')
+				$('.mod_hw').css("display", "none");
+			else
+				@setState @getInitialState()
+				$('#list').html('')
+
+
+	UrlExists: (url, cb) ->
+    	jQuery.ajax
+        	url:      url,
+        	dataType: 'text',
+        	type:     'GET',
+        	complete: (xhr) ->
+        	    if typeof cb == 'function'
+        	       cb.apply(this, [xhr.status]);
+
 
 	render: ->
 		React.DOM.div null,
