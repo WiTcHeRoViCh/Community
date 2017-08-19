@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20170806162056) do
 
   create_table "anonymous_messages", force: :cascade do |t|
     t.string "body"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

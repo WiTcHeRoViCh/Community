@@ -4,7 +4,12 @@
 		
 		<div id = "user_avatar">
 			<%= image_tag(current_profile.avatar) %>
-			<button>Write message</button>
+			
+			<% if @current_user.id != @user.id %>
+				<button>Write message</button>
+			<% else %>
+				<span id ="your_page">It is your page</span>
+			<% end %>
 		</div>
 
 		<div id = "all_inf" class="padd15">
@@ -29,6 +34,7 @@
 
 		<div id = "anon_mes" class="padd15">
 			<h2>Write anonymous message</h2>
+			<%= react_component 'Anon_messages', {anon_messages: user_anon_message, current_user: current_user, user: user} %>
 		</div>
 
 	</div>
@@ -37,5 +43,8 @@
 		<%= render 'photos' %>
 	</div>
 
+	<div id = "user_news">
+		<%= react_component 'News', {data: user_articles, current_user: current_user, user: user} %>
+	</div>
 	
 </div>

@@ -6,7 +6,7 @@
 		user: @props.user
 	
 	showForm: ->
-		$('.mod_hw').css("display", "block")
+		$('.photo_mod_hw').css("display", "block")
 
 	hideForm: (event) ->
 		if $(event.target).is($('.mod_hw'))
@@ -50,8 +50,17 @@
 
 	deleteP: (data) ->
 		if data['action'] == 'delete'
-			photo = $("*[data-key=#{data['photo_id']}]")
-			photo.remove()
+			photos = @state.photos.slice()
+			photo = data['photo']
+			index = @findElemIndex(photos, photo)
+			photos.splice(index, 1)
+			@setState photos: photos
+
+	findElemIndex: (photos, photo) ->
+		for i in [0..photos.length-1]
+			if photos[i]['id'] == photo['id']
+				return i
+		return nil
 
 	render: ->
 		React.DOM.div

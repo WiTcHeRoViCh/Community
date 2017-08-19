@@ -1,5 +1,7 @@
 @PhotoForm = React.createClass
 	getInitialState: ->
+		image: ''
+		name: ''
 		images: ''
 		user_id: @props.current_user.id
 	
@@ -10,13 +12,17 @@
 		reader.onload = (output) ->
 			src = output.target.result
 			out = $('#list')
-			out.html("<img src='"+src+"' class='uploading_photo' name='"+escape(file.name)+"'>")			
+			hid_field = $('[name=image]')
+			out.html("<img src='"+src+"' class='uploading_photo' name='"+escape(file.name)+"'>")
+			hid_field.attr({'src': src, 'value': escape(file.name)})
+			hid_field.click()
 		reader.readAsDataURL(file)
-		@setState images: event.target.value	
+		@setState "#{name}": event.target.value
+
 
 	checkOnValid: ->
 		btn = $('#photo_submit')
-		if @state.images && @state.user_id == @props.current_user.id
+		if @state.images && @state.user_id == @props.current_user.id && @state.name && @state.image
 			btn.css({"color": "#efefef", "cursor":"pointer"})
 			return true
 		else
@@ -25,23 +31,20 @@
 
 	addPhoto: ->
 		if @checkOnValid()
-			src = $('.uploading_photo').attr('src')
-			name = $('.uploading_photo').attr('name')
-
-			status = @UrlExists src, (status) ->
+			status = @UrlExists @state.image, (status) ->
 				if status != '0' && status != '404'
 					return true
 				else
 					return false
 
 			if status
-				@props.handleNewPhoto {images: src, name: name, user_id: @state.user_id}
+				@props.handleNewPhoto @state
 				@setState @getInitialState()
 				$('#list').html('')
 				$('.mod_hw').css("display", "none");
 			else
 				@setState @getInitialState()
-				$('#list').html('')
+				$('#list').html('Please, reload your image!')
 
 
 	UrlExists: (url, cb) ->
@@ -52,6 +55,10 @@
         	complete: (xhr) ->
         	    if typeof cb == 'function'
         	       cb.apply(this, [xhr.status]);
+
+    saveSrc: (event) ->
+    	@setState "image": event.target.src
+    	@setState "name": event.target.value
 
 
 	render: ->
@@ -69,6 +76,12 @@
 					ref: 'file'
 					onChange: @handleChange
 					value: @state.images
+
+				React.DOM.input
+					type: 'hidden'
+					name: 'image'
+					value: ''
+					onClick: @saveSrc
 
 				React.DOM.output
 					id: 'list'

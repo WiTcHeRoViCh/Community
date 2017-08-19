@@ -1,5 +1,7 @@
 @ArticleForm = React.createClass
 	getInitialState: ->
+		src: ''
+		name: ''
 		title: ''
 		photo: ''
 		description: ''
@@ -17,32 +19,41 @@
 		reader.onload = (output) ->
 			src = output.target.result
 			out = $('#mini_art_photo')
-			out.html("<img src='"+src+"' class='out_mini_photo' name='"+escape(file.name)+"'>")			
+			image = $('[name=image]')
+			out.html("<img src='"+src+"' class='out_mini_photo' name='"+escape(file.name)+"'>")
+			image.attr({'src': src, 'value': escape(file.name)})
+			image.click()
 		reader.readAsDataURL(file)
-
 		@setState "#{name}": event.target.value
 
 	valid: ->
 		btn = $('.btn-primary')
-		if @state.title && @state.photo && @state.description && @state.importance
+		if @state.title && @state.description
+			if @state.photo
+				if @state.src && @state.name
+					btn.css({"cursor": "pointer", "color":"#fff"})
+					return true
+				else
+					btn.css({"cursor": "default", "color":"#686464"})
+					return false
+
 			btn.css({"cursor": "pointer", "color":"#fff"})
-			btn.attr('id', @props.current_user.id);
 			return true
 		else
 			btn.css({"cursor": "default", "color":"#686464"})
-			btn.attr('id', '');
 			return false
 
 	addArticle:  ->
 		if @valid()
-			out = $('.out_mini_photo')
-			src = out.attr('src')
-			name = out.attr('name')
 
-			@props.handleNewArticle {@state, src, name}
+			@props.handleNewArticle @state
 			@setState @getInitialState()
 			$('#mini_art_photo').html('')
 			$('.mod_hw').css("display", "none");
+
+	setSrc: (event) ->
+		@setState 'src': event.target.src
+		@setState 'name': event.target.value
 
 	render: ->
 		React.DOM.form
@@ -70,6 +81,12 @@
 
 			React.DOM.output
 				id: 'mini_art_photo'
+
+			React.DOM.input
+				type: 'hidden'
+				name: 'image'
+				value: ''
+				onClick: @setSrc
 
 			React.DOM.div
 				className: 'form_group'

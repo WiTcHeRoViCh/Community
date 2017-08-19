@@ -16,8 +16,16 @@ class ProfilesController < ApplicationController
 		@photos = User.find(params[:id]).photos.all.reverse
 	end
 
+	def user_articles
+		@user_articles = Article.all.where(user_code: user.code)
+	end
+
+	def user_anon_message
+		@anon_messages = user.anonymous_messages.reverse
+	end
 
 
-	helper_method :user_photos, :user
+
+	helper_method :user_photos, :user, :user_articles, :user_anon_message
 end
 

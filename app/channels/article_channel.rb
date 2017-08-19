@@ -6,12 +6,17 @@ class ArticleChannel < ApplicationCable::Channel
 	end
 
 	def addArticle(data)
-		photo = parse_image(data['article']['src'], data['article']['name'])
 		article = data['article']
-		title = article['state']['title']
-		description = article['state']['description']
-		importance = article['state']['importance']
-		user_code = article['state']['user_code']
+		if article['src'] != "" && article['name'] != ""
+			photo = parse_image(article['src'], article['name']) 
+		else
+			photo = nil
+		end
+
+		title = article['title']
+		description = article['description']
+		importance = article['importance']
+		user_code = article['user_code']
 
 		new_article = Article.new(title: title, photo: photo, description: description, importance: importance, user_code: user_code)
 		clean_tempfile
@@ -28,9 +33,19 @@ class ArticleChannel < ApplicationCable::Channel
     end
 	end
 
-	def delete(data)
-		article = Article.find(data['id'])
-		article.delete
+	def deleteArticle(data)
+		article_id = data['article_id']
+		article = Article.find(article_id)
+
+		if article.delete
+			ActionCable.server.broadcast(
+				'article_channal_1',
+				action: 'delete',
+				article_id: article_id
+			)
+		else
+
+		end
 	end
 
 	private

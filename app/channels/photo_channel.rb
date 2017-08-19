@@ -6,8 +6,8 @@ class PhotoChannel < ApplicationCable::Channel
 	end
 
 	def addPhoto(data)
-		if data['photo']['images'] != "undefined" && data['photo']['user_id'] != "undefined" && data['photo']['name'] != "undefined"
-			images = parse_img(data['photo']['images'], data['photo']['name'])
+		if data['photo']['image'] != "undefined" && data['photo']['user_id'] != "undefined" && data['photo']['name'] != "undefined"
+			images = parse_img(data['photo']['image'], data['photo']['name'])
 			user_id = data['photo']['user_id']
 		end
 
@@ -45,7 +45,7 @@ class PhotoChannel < ApplicationCable::Channel
 			ActionCable.server.broadcast(
       	"photos_channel",
       	action: 'delete',
-      	photo_id: photo_id
+      	photo: photo
     	)
   	else
 

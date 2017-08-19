@@ -1,4 +1,8 @@
 @Article = React.createClass
+
+	deleteArt: ->
+		@props.handleDeleteArticle @props.article.id, @props.current_user.id if confirm("Are you sure want to delete article?")
+
 	render: ->
 		React.DOM.div
 			className: 'article'
@@ -40,4 +44,5 @@
 						className: 'art_edit'
 						React.DOM.button
 							className: 'delete_art'
+							onClick: @deleteArt
 							'Delete'
