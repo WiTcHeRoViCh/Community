@@ -1,0 +1,113 @@
+#edit_profile {
+	width: 99.3%;
+	height: 100vh;
+	background: #f0ef72;
+	position: absolute;
+	border-radius: 20px;
+	left: 5px;
+}
+
+.side_strips {
+	margin-top: 50px;
+	margin-left: 20%;
+	width: 60%;
+	border-left: 2px solid #aba9a9e6;
+	border-right: 2px solid #aba9a9e6;
+}
+
+.side_strips h2 {
+
+}
+
+.simple_form {
+	margin-left: 20px;
+}
+
+.simple_form label {
+	cursor: pointer;
+}
+
+.simple_form input {
+	float: right;
+	clear: both;
+	margin-right: 35px;
+}
+
+
+#profile_country {
+	float: right;
+	clear: both;
+	margin-right: 35px;
+}
+
+.optional{
+	margin-bottom: 10px;
+	font-size: 18px;
+}
+
+
+.input {
+	padding-bottom: 10px;
+}
+
+#profile_birthday_1i {
+	margin-left: 635px;
+}
+
+#profile_avatar {
+	width: 295px;
+}
+
+#show_profile_avatar {
+	height: 84px;
+	margin-bottom: 10px;
+}
+
+#show_profile_avatar span {
+	position: absolute;
+	margin-top: 30px;
+	font-size: 18px;
+}
+
+#show_profile_avatar img {
+	margin-right: 35px;
+	width: 84px;
+	height: 84px;
+	float: right;
+}
+
+#prof_submit {
+	float: none;
+	height: 38px;
+	margin-bottom: 15px;
+	cursor: pointer;
+}
+
+.choose_set {
+	margin-left: 20%;
+	margin-top: 50px;
+}
+
+.choose_set div {
+	margin-right: 25px;
+	font-size: 20px;
+	width: 63px;
+	padding: 15px 40px;
+	background: #d77171;
+	display: inline;
+	cursor: pointer;
+	color: #600;
+	border-radius: 5px;
+}
+
+.box_shadow {
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#first_prof_form {
+	display: block;
+}
+
+#second_prof_form {
+	display: none;
+}

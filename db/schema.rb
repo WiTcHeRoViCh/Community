@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170806162056) do
+ActiveRecord::Schema.define(version: 20170824114847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,12 @@ ActiveRecord::Schema.define(version: 20170806162056) do
     t.string "country"
     t.string "place_of_study"
     t.string "where_want_to_live"
+    t.boolean "hide_news", default: false
+    t.boolean "hide_photos", default: false
+    t.boolean "hide_user_inf", default: false
+    t.boolean "hide_anon_input", default: false
+    t.boolean "can_write", default: true
+    t.boolean "hide_all", default: false
   end
 
   create_table "projects", force: :cascade do |t|

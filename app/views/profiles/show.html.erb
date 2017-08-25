@@ -15,36 +15,57 @@
 		<div id = "all_inf" class="padd15">
 			<h2>Personal information</h2>
 			<div class = "scroll">
-				<ul>
-					<% if current_profile.surname %>   								<li><div>Full name: <%= @user.profile.name %> <%= @user.profile.surname%></div></li> 						<% end %>
-					<% if @user.code %>   														<li><div>Personal code: <%= @user.code%></div></li> 																						<% end %>
-					<% if current_profile.position %>  			 					<li><div>Position: <%= @user.profile.position%></div></li> 																			<% end %>
-					<% if current_profile.country %>   								<li><div>Country: <%= @user.profile.country%></div></li> 																				<% end %>
-					<% if current_profile.place_of_study %>   				<li><div>Place of study: <%= @user.profile.place_of_study%></div></li> 													<% end %>
-					<% if current_profile.age %>  										<li><div><%= @user.profile.name %>'s age: <%= @user.profile.age%></div></li> 										<% end %>
-					<% if current_profile.birthday %>									<li><div>Birthday: <%= @user.profile.birthday%></div></li> 																			<% end %>
-					<% if current_profile.hobby %>										<li><div>Hobby: <%= @user.profile.hobby%></div></li> 																						<% end %>
-					<% if current_profile.where_want_to_live %>				<li><div>Where want to live: <%= @user.profile.where_want_to_live%></div></li> 									<% end %>
-					<% if current_profile.association_with_animal %>	<li><div>With what animal is associated: <%= @user.profile.association_with_animal%></div></li> <% end %>
-					<% if current_profile.plan_for_future %>					<li><div>Plans for future: <%= @user.profile.plan_for_future%></div></li> 											<% end %>
-					<% if current_profile.description %>							<li><div>Description: <%= @user.profile.description%></div></li>																<% end %>
-				</ul>
+				<% unless @user.profile.hide_user_inf && @user.id != current_user.id %> 
+					<ul>
+						<% if current_profile.surname? %>   									<li><div>Full name: <%= @user.profile.name %> <%= @user.profile.surname%></div></li>  					<% end %>
+					
+						<% if @user.code? %>   																<li><div>Personal code: <%= @user.code%></div></li> 																						<% end %>
+					
+						<% if current_profile.position? %>  									<li><div>Position: <%= @user.profile.position%></div></li> 																			<% end %>
+					
+						<% if current_profile.country? %>   									<li><div>Country: <%= @user.profile.country%></div></li> 																				<% end %>
+					
+						<% if current_profile.place_of_study? %>   						<li><div>Place of study: <%= @user.profile.place_of_study%></div></li>													<% end %>
+					
+						<% if current_profile.age? %>  												<li><div><%= @user.profile.name %>'s age: <%= @user.profile.age%></div></li> 										<% end %>
+					
+						<% if current_profile.birthday? %>										<li><div>Birthday: <%= @user.profile.birthday%></div></li> 																			<% end %>
+					
+						<% if current_profile.hobby? %>												<li><div>Hobby: <%= @user.profile.hobby%></div></li> 																						<% end %>
+					
+						<% if current_profile.where_want_to_live? %>					<li><div>Where want to live: <%= @user.profile.where_want_to_live%></div></li>									<% end %>
+					
+						<% if current_profile.association_with_animal? %>			<li><div>With what animal is associated: <%= @user.profile.association_with_animal%></div></li> <% end %>
+					
+						<% if current_profile.plan_for_future? %>							<li><div>Plans for future: <%= @user.profile.plan_for_future%></div></li> 											<% end %>
+					
+						<% if current_profile.description? %>									<li><div>Description: <%= @user.profile.description%></div></li>																<% end %>
+					</ul>
+				<% end %>
 			</div>
+
+			<% if user.id == current_user.id %>
+				<%= link_to 'Edit your profile', edit_user_profile_path(current_user, user), id: 'edit_lnk' %>
+			<% end %>
 		</div>
 
 		<div id = "anon_mes" class="padd15">
 			<h2>Write anonymous message</h2>
-			<%= react_component 'Anon_messages', {anon_messages: user_anon_message, current_user: current_user, user: user} %>
+			<%= react_component 'Anon_messages', {anon_messages: user_anon_message, current_user: current_user, user: user, hide_anon_input: @user.profile.hide_anon_input} %>
 		</div>
 
 	</div>
 
 	<div id="user_photos">
-		<%= render 'photos' %>
+		<% unless @user.profile.hide_photos && @user.id != current_user.id %>
+			<%= render 'photos' %>
+		<% end %>
 	</div>
 
 	<div id = "user_news">
-		<%= react_component 'News', {data: user_articles, current_user: current_user, user: user} %>
+		<% unless @user.profile.hide_news && @user.id != current_user.id %>
+			<%= react_component 'News', {data: user_articles, current_user: current_user, user: user} %>
+		<% end %>
 	</div>
 	
 </div>

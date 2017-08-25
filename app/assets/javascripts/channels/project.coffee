@@ -1,5 +1,20 @@
 $ ->
 	initProjChannel(1)
+	
+	$(document).on 'click', '.choose_set div', (event) ->
+		if event.target.id == 'f_set'
+			$('.choose_set div').attr('class','')
+			event.target.className = "box_shadow"
+
+			$('#first_prof_form').css('display','block')
+			$('#second_prof_form').css('display', 'none')
+		else
+			$('.choose_set div').attr('class','')
+			event.target.className = "box_shadow"
+
+			$('#second_prof_form').css('display','block')
+			$('#first_prof_form').css('display', 'none')
+
 
 $(document).on 'click', '#submit', (event) ->
 	if $(event.target).attr('rel')

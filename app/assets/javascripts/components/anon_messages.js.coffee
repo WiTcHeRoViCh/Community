@@ -3,6 +3,7 @@
 		anon_messages: @props.anon_messages
 		current_user: @props.current_user
 		user: @props.user
+		hide_anon_input: @props.hide_anon_input
 		body: ''
 
 	handleChange: (event) ->
@@ -26,9 +27,10 @@
 
 	deleteMessage: (event) ->
 		mess_id = $(event.target).parents('.anon_message').attr('data-key')
+		mess_text = $(event.target).parents('.anon_message').children('.anon_body').text()
 		user_id = @state.current_user.id
 
-		App.anon_message.deleteMessage mess_id, user_id if confirm("Delete '"+mess_id+"' message?")
+		App.anon_message.deleteMessage mess_id, user_id if confirm("Delete '"+mess_text+"' message?")
 
 	componentDidMount: ->
 		@setSubscription()
@@ -101,7 +103,7 @@
 							className: 'anon_body'
 							message.body
 
-			if @state.current_user.id != @state.user.id
+			if @state.current_user.id != @state.user.id && !@state.hide_anon_input
 				React.DOM.div
 					id: 'anon_message_form'
 					React.DOM.form null,

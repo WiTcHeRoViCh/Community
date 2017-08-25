@@ -203,6 +203,7 @@
 	margin-top: 7px;
 	position: absolute;
 	border-radius: 5px;
+	color: #5b0072;
 }
 
 .photo_mod_hw {
@@ -220,6 +221,7 @@
 	margin-left: 150px;
 	width: 80%;
 	margin-top: 100px;
+	padding-bottom: 100px;
 }
 
 #all_anon_mess {
@@ -259,4 +261,15 @@
 
 .anon_body {
 	display: inline;
+}
+
+#edit_lnk {
+	position: absolute;
+	margin-top: 30px;
+	padding: 10px 50px 10px;
+	background: #d77171;
+	color: #5b0072;
+	text-decoration: none;
+	border-radius: 5px;
+	font-size: 19px;
 }

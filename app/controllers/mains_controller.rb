@@ -32,7 +32,10 @@ class MainsController < ApplicationController
   end
 
   def articles
-    @articles ||= Article.all.sort.reverse
+    usr_code = []
+    User.all.each{|user| usr_code.push(user.code) if user.profile.hide_news == false }
+
+    @articles = Article.where(user_code: usr_code).sort.reverse
   end
 
   def projects

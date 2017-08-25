@@ -23,7 +23,9 @@ if (typeof window !== 'undefined') {
 }
 
 
+
 $(document).ready(function() {
+
 	tabs = $('#root_tabs ul li a');
 	getCookie("render") ? $('[rel ="'+ getCookie("render") +'"]')[0].id = "current" : tabs[0].id = "current"
 	tab = $('#tab')
@@ -40,11 +42,6 @@ $(document).ready(function() {
 	});
 
 
-	$('#root_tabs ul li a').each(function(index){
-  		$('#root_tabs ul li a')[index].accessKey = (index+1).toString();
-	});
-
-
 	$('.room-channel').click(function() {
 		$('#message_body').focus();
 		document.getElementsByClassName("message")[$('.message').length-1].scrollIntoView();
@@ -58,7 +55,6 @@ $(document).ready(function() {
 
 	$('.message p a').click(function(e) {update(e)});
 
-	
 	function update(e){
   	mes = $(e.target).parents('div.message');
   	id = $(mes).data('message-id');

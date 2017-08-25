@@ -1,0 +1,45 @@
+<div id ="edit_profile">
+	
+	<div class = "choose_set">
+		<div id="f_set" class="box_shadow">Public</div>
+		<div id="s_set">Privacy</div>
+	</div>
+	
+	<div class="side_strips">
+		
+		<%= simple_form_for [current_user, @profile] do |f| %>
+			<div id = "first_prof_form">
+				<h2>Public information</h2>
+				<%= f.input :name, label: 'Your name: ' %>
+				<%= f.input :surname, label: 'Your surname: ' %>
+				<%= f.input :avatar, as: :file, label: 'Choose avatar: ' %>
+				<div id="show_profile_avatar"><span>Your avatar:</span> <%= image_tag(@profile.avatar) %></div>
+				<%= f.input :age, label: 'Your age: ' %>
+				<%= f.input :birthday, label: 'Your birthday: ', input_html: {class: 'birthday_field'} %>
+				<%= f.input :country, label: 'Your country: ' %>
+				<%= f.input :where_want_to_live, label: 'Where you want to live: ' %>
+				<%= f.input :place_of_study, label: 'Where you study: ' %>
+
+				<%= f.input :hobby, label: 'Your hobby: ' %>
+				<%= f.input :favorite_music, label: 'Your favorite music: ' %>
+				<%= f.input :plan_for_future, label: 'Your plans for future: ' %>
+				<%= f.input :description, label: 'Write description about you: ' %>
+				<%= f.input :association_with_animal, label: 'With what animal do you associate yourself: ' %>
+			</div>
+
+			<div id = "second_prof_form">
+				<h2>Privacy settings</h2>
+				<h4>This settings hide your information from all!</h4>
+				<%= f.input :hide_news, label: 'Hide your news: ' %>
+				<%= f.input :hide_photos, label: 'Hide photos: ' %>
+				<%= f.input :hide_user_inf, label: 'Hide your personal information: ' %>
+				<%= f.input :hide_anon_input, label: 'Hide anonymous input field: ' %>
+				<%= f.input :can_write, label: 'Can write other people: ' %>
+			</div>
+
+			<%= f.submit 'Update profile', id: 'prof_submit' %>
+
+		<% end %>
+
+	</div>
+</div>

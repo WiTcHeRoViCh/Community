@@ -1,9 +1,18 @@
 class ProfilesController < ApplicationController
-	before_action :user, only: [:show]
+	before_action :user, only: [:show, :edit]
 	load_and_authorize_resource
 
 	def show
 
+	end
+
+	def edit
+		@profile = current_user.profile
+	end
+
+	def update
+		@profile.update(profile_params)
+		redirect_to edit_user_profile_path(current_user, @profile)
 	end
 
 	private
@@ -24,6 +33,9 @@ class ProfilesController < ApplicationController
 		@anon_messages = user.anonymous_messages.reverse
 	end
 
+	def profile_params
+		params.require(:profile).permit(:name, :surname, :avatar, :age, :birthday, :country, :where_want_to_live, :place_of_study, :hobby, :favorite_music, :plan_for_future, :description, :association_with_animal, :hide_news, :hide_photos, :hide_user_inf, :hide_anon_input, :can_write, :hide_all)
+	end
 
 
 	helper_method :user_photos, :user, :user_articles, :user_anon_message
