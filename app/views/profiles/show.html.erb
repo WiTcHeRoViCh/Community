@@ -7,6 +7,29 @@
 			
 			<% if @current_user.id != @user.id %>
 				<button>Write message</button>
+
+				<div id = "modal_write_mess">
+					<div id = "write_mess_window">
+						<div id = "write_mess_head" >
+							Write message to <%= @user.profile.name %>
+						</div>
+
+						<div>
+							<%= simple_form_for @report, url: conversations_path, method: :post do |f| %>
+
+								<%= f.input :body, label: false, as: :text, placeholder: 'Write message', input_html: {minlength: 1} %>
+								<%= f.hidden_field :user_id, value: current_user.id %>
+								<%= f.hidden_field :recipient_id, value: @user.id %>
+								<%= f.hidden_field :user_name, value: current_user.profile.name+' '+current_user.profile.surname %>
+								<%= f.hidden_field :recipient_name, value: @user.profile.name+' '+@user.profile.surname %>
+
+								<%= f.submit 'Send message' %>
+
+							<% end %>
+						</div>
+					</div>
+				</div>
+
 			<% else %>
 				<span id ="your_page">It is your page</span>
 			<% end %>

@@ -273,3 +273,55 @@
 	border-radius: 5px;
 	font-size: 19px;
 }
+
+#modal_write_mess {
+	display: none;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0;
+	position: fixed;
+	background-color: rgba(0, 0, 0, 0.4);
+	z-index: 1;
+}
+
+#write_mess_window {
+	background: #e1e1e1;
+	width: 500px;
+	height: 320px;
+	margin: 15% auto;
+	border-radius: 20px;
+}
+
+#write_mess_head {
+	height: 45px;
+	background: #1390ec;
+	border-radius: 15px 15px 0 0;
+	padding: 20px 15px 0;
+	font-size: 19px;
+	color: #e6e6e6;
+	font-style: oblique;
+}
+
+#report_body {
+	width: 455px;
+	height: 180px;
+	margin-top: 10px;
+	font-size: 19px;
+	margin-bottom: 0;
+}
+
+#new_report input {
+	float: none;
+	margin-right: 0;
+	margin-top: 10px;
+	height: 35px;
+}
+
+#new_report .input {
+	padding-bottom: 0;
+}
+
+#new_report .optional {
+	margin-bottom: 0;
+}

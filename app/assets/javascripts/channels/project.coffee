@@ -15,6 +15,13 @@ $ ->
 			$('#second_prof_form').css('display','block')
 			$('#first_prof_form').css('display', 'none')
 
+	$(document).on 'click', '#user_avatar button', ->
+		$('#modal_write_mess').css('display','block')
+
+	$(document).on 'click', 'body', (event) ->
+		if event.target.id == 'modal_write_mess'
+			$('#modal_write_mess').css('display','none')
+
 
 $(document).on 'click', '#submit', (event) ->
 	if $(event.target).attr('rel')

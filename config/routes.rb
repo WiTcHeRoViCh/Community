@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   	resources :profiles, only: [:show, :edit, :update]
     resources :projects, only: :edit
   end
+  resources :conversations, except: [:edit, :update]
+  resources :reports
 
   resources :messages
   resources :articles, only: :edit

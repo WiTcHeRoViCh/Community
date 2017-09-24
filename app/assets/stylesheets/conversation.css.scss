@@ -1,0 +1,104 @@
+#conversations_path {
+	width: 99.3%;
+	background: #f0ef72;
+	position: absolute;
+	border-radius: 20px;
+	left: 5px;
+	height: 100%;
+}
+
+#conversations {
+	margin: 60px 15% 0px;
+}
+
+.recipient_avatar {
+	width: 80px;
+	height: 80px;
+	border-radius: 100%;
+}
+
+.last_message {
+	display: inline;
+	position: absolute;
+	margin-top: 24px;
+	margin-left: 15px;
+	font-size: 20px;
+	overflow-x: scroll;
+	width: 50%;
+	height: 35px;
+	cursor: pointer;
+	padding-top: 20px;
+}
+
+.recipient_inf {
+	display: inline;
+}
+
+.recipient_name {
+	display: inline;
+	position: absolute;
+	font-size: 20px;
+	margin-left: 15px;
+	cursor: pointer;
+	color: #0303a1;
+}
+
+.right_inf_panel {
+	display: ruby-text;
+	margin-left: 80%;
+}
+
+#conv_message_path {
+	width: 80%;
+	margin-left: 20%;
+	margin-top: 50px;
+}
+
+#conversation_messages {
+	height: 70vh;
+	overflow-y: scroll;
+	padding-top: 20px;
+}
+
+.conversation_message {
+	margin-bottom: 50px;
+	font-size: 20px;
+}
+
+.recipient_message {
+	margin-left: 50%;
+	display: inline;
+	padding: 20px;
+	background: #cecece;
+	border-radius: 30px;
+}
+
+.current_sender_message {
+	display: inline;
+	padding: 20px;
+	background: #8cafd5;
+	border-radius: 30px;
+}
+
+#conv_report_submit {
+	position: absolute;
+	display: inline;
+
+	margin-top: 8px;
+	margin-left: 20px;
+	padding: 10px 20px;
+
+	background: #5A89C5;
+	color: #ece6e6;
+
+	border-radius: 5px;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+#conv_report_body {
+	width: 731px;
+	height: 56px;
+	resize: none;
+	font-size: 20px;
+}

@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
 	load_and_authorize_resource
 
 	def show
-
+		@report = Report.new
 	end
 
 	def edit
