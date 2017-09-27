@@ -26,21 +26,29 @@ body {
 
 .users {
 	position: absolute;
+	margin-left: 20px;
 }
 
 .user {
 	display: inline;
-  margin-left: 20px;
-  float: left;
+	margin-right: 45px;
+	float: left;
+	background: #3668aa;
+	padding: 20px;
+	border-radius: 10px;
 }
 
 .u_av {
 	width: 97px;
-	padding-left: 9%;
+	padding-left: 14%;
 }
 
 .u_full_name {
 	display: flex;
+	color: #e1e1e1;
+	font-size: 19px;
+	cursor: pointer;
+	margin-top: 5px;
 }
 
 #root_tabs {

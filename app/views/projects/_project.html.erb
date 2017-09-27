@@ -4,7 +4,7 @@
 	</div>
 
 	<div class = "art_photo">
-		<%= article.photo %>
+		<%= image_tag(article.photo) %>
 	</div>
 
 	<div class = "art_desc">
@@ -27,7 +27,7 @@
 			</div>
 
 			<div class = "art_edit">
-				<button class="delete_art">Delete</button>
+				<%= link_to 'Delete', article_path(article), method: :delete, data: { confirm: 'Are you sure want to delete this?'}, class: 'delete_art_lnk' %>
 			</div>
 		</div>
 

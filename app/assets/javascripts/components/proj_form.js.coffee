@@ -12,6 +12,21 @@
 		name = event.target.name
 		@setState "#{name}": event.target.value
 
+	handleChangePhoto: (event) ->
+		name = event.target.name
+		file = event.target.files[0]
+		reader = new FileReader()
+		reader.onload = (output) ->
+			src = output.target.result
+			out = $('#mini_proj_photo')
+			image = $('[name=photo]')
+			out.html("<img src='"+src+"' class='out_mini_photo_proj' name='"+escape(file.name)+"'>")
+			image.attr({'src': src, 'value': escape(file.name)})
+			image.click()
+
+		reader.readAsDataURL(file)
+		@setState 'photo': event.target.value
+
 	valid: ->
 		btn = $('#submit')
 		if @state.title && @state.photo && @state.description && @state.crew
@@ -27,6 +42,13 @@
 		if @valid()
 			@props.handleNewProject @state
 			@setState @getInitialState()
+			$('.out_mini_photo_proj').attr('src','')
+
+	setPhotoUrl: (event) ->
+		filename = event.target.value
+		image_url = event.target.src
+		@setState 'filename': filename
+		@setState 'image_url': image_url
 
 	render: ->
 		React.DOM.form
@@ -45,11 +67,11 @@
 			React.DOM.div
 				className: 'proj_group1'
 				React.DOM.input
-					 placeholder: 'Photo'
+					 placeholder: 'Crew'
 					 type: 'text'
 					 onChange: @handleChange
-					 value: @state.photo
-					 name: 'photo'
+					 value: @state.crew
+					 name: 'crew'
 
 			React.DOM.div
 				id: 'new_p'
@@ -64,26 +86,31 @@
 					 name: 'description'
 
 			React.DOM.div
-				className: 'proj_group1'
+				className: 'proj_group2'
 				React.DOM.input
-					 placeholder: 'Crew'
-					 type: 'text'
-					 onChange: @handleChange
-					 value: @state.crew
-					 name: 'crew'
+					 type: 'file'
+					 onChange: @handleChangePhoto
+					 value: @state.photo
+
+				React.DOM.div
+					id: 'mini_proj_photo'
+
+				React.DOM.input
+					type: 'hidden'
+					name: 'photo'
+					value: ''
+					onClick: @setPhotoUrl
 
 			React.DOM.div
 				className: 'proj_group'
 				React.DOM.input
 					 type: 'hidden'
-					 onChange: @handleChange
 					 value: @state.user_id
 
 			React.DOM.div
 				className: 'proj_group'
 				React.DOM.input
 					 type: 'hidden'
-					 onChange: @handleChange
 					 value: @state.user_code
 
 				React.DOM.span

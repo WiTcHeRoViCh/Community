@@ -6,7 +6,7 @@
 		user: @props.user
 	
 	showForm: ->
-		$('.photo_mod_hw').css("display", "block")
+		$('.mod_hw').css("display", "block")
 
 	hideForm: (event) ->
 		if $(event.target).is($('.mod_hw'))
@@ -70,6 +70,7 @@
 				React.DOM.div
 					id: 'for_adding_photo'
 					React.DOM.span null, 'Your photos: '
+
 					React.DOM.img
 						id: 'upload_photo'
 						title: 'Upload new photo'

@@ -1,9 +1,6 @@
 @Users = React.createClass
 	getInitialState: ->
     users: @props.data
- 
-  getDefaultProps: ->
-    users: []
 
   addUser: (user) ->
   	users = @state.users.slice()

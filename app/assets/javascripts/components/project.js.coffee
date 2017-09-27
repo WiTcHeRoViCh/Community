@@ -10,7 +10,8 @@
 
 			React.DOM.div
 				id: 'proj_photo'
-				@props.project.photo
+				React.DOM.img
+					src: @props.project.photo.url
 
 			React.DOM.div
 				id: 'proj_description'

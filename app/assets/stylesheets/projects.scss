@@ -5,6 +5,7 @@
 	background-color: rgba(204, 204, 204, 0.4);
 	z-index: 1;
 	border-radius: 0 0 5px 5px;
+	margin-bottom: 15px;
 }
 
 #project_form {
@@ -14,6 +15,15 @@
 .proj_group1 {
 	display: inline;
 	padding-left: 40px;
+}
+
+.proj_group2 {
+	display: inline;
+	margin-left: 40px;
+}
+
+.proj_group2 input {
+	height: 33px;
 }
 
 .proj_group1 input{
@@ -58,4 +68,14 @@
 
 #proj_button {
 	height: 40px;
+}
+
+#mini_proj_photo {
+	display: inline;
+}
+
+.out_mini_photo_proj {
+	weigth: 100px;
+	height: 100px;
+	position: absolute;
 }

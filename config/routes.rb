@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :reports
 
   resources :messages
-  resources :articles, only: :edit
+  resources :articles, only: [:edit, :destroy]
 
   root 'mains#index'
 
